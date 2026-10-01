@@ -1,36 +1,22 @@
-import React from "react";
-import HomeComponent from "./components/home.jsx";
-import ExperienciaComponent from "./components/experiencia.jsx";
-import ProyectosComponent from "./components/proyectos.jsx";
-import ServiciosComponent from "./components/servicios.jsx";
-import ContactoComponent from "./components/contacto.jsx";
-import LlmAvatarAssistant from '../ai/llm-avatar-assistant-react-main/src/components/LlmAvatarAssistant.jsx'
-import { useState } from 'react'
-
-/**
- * Demo host: a small "portfolio / docs" SPA for the assistant itself.
- * Every <section id> is a target the assistant can scroll to. The titles are
- * deliberately distinctive ("Overview", "Quick Start", …) so the model can be
- * asked to reference one and the auto-scroll is easy to verify in tests.
- *
- * The assistant is configured to talk to the local llama.cpp router through
- * the dev proxy (baseUrl "/v1" -> http://192.168.1.2:8080). Override with
- * VITE_LLM_PROXY_TARGET in .env.local, or point cfg.baseUrl at any
- * OpenAI-compatible URL.
- */
+// src/components/features/body.jsx
+import React, { useState } from "react";
+import HomeComponent from "/components/home.jsx";
+import ExperienciaComponent from "/components/experiencia.jsx";
+import ProyectosComponent from "/components/proyectos.jsx";
+import ServiciosComponent from "/components/servicios.jsx";
+import ContactoComponent from "/components/contacto.jsx";
+import LlmAvatarAssistant from '../../ai/llm-avatar-assistant-react-main/src/components/LlmAvatarAssistant.jsx'
 
 const CONFIG = {
   baseUrl: '/v1',
-  apiKey: '', // dev: the Vite proxy injects the real key server-side
+  apiKey: '', 
   model: (typeof __VITE_LLM_MODEL__ !== 'undefined' ? __VITE_LLM_MODEL__ : 'default'),
-  defaultText:
-    'I am floating here on the right. Ask me anything about this page — e.g. "what can I do with the assistant?" and I will point you to the right section.',
+  defaultText: 'I am floating here on the right. Ask me anything about this page...',
   modelUrl: 'models/robot.glb',
   side: 'right',
   streaming: true,
-systemPrompt: `
+  systemPrompt: `
   Eres el asistente virtual del portafolio de Gonzalo Flores.
-
   REGLAS:
   - Responde siempre en español.
   - Solo puedes usar la información incluida abajo.
@@ -52,41 +38,63 @@ systemPrompt: `
   `,
 };
 
-
 function Body() {
-      const [side, setSide] = useState('right');
+    const [side, setSide] = useState('right');
     const toggleSide = () => {
         setSide((side) => (side === 'right') ? 'left' : 'right');
     };
+
   return (
-    <main className="flex-1 ml-64 p-6 bg-gray-200 flex flex-col gap-12 overflow-y-auto">
-      <div className="max-w-5xl w-full mx-auto flex flex-col gap-12">
-        <div id="home" className="scroll-mt-24">
+    <div className="flex-1 ml-64 flex flex-col h-screen overflow-y-auto bg-gray-200">
+     <main id="contenido" className="flex-1 p-6 flex flex-col gap-12">
+        <div className="max-w-5xl w-full mx-auto flex flex-col gap-12">
+          <div id="home" className="scroll-mt-24">
             <HomeComponent />
+          </div>
+          <div id="expertise" className="scroll-mt-24">
+            <ExperienciaComponent />
+          </div>
+          <div id="proyectos" className="scroll-mt-24">
+            <ProyectosComponent />
+          </div>
+          <div id="services" className="scroll-mt-24">
+            <ServiciosComponent />
+          </div>
+          <div id="contact" className="scroll-mt-24">
+            <ContactoComponent />
+          </div>
+          <div className="scroll-mt-24 bg-black rounded-3xl border border-gray-100 shadow-sm p-8 md:p-12 flex flex-col gap-8">
+            <LlmAvatarAssistant
+              key={side}
+              config={{ ...CONFIG, side }}
+              onSend={() => { /* demo hook */ }}
+            />
+          </div>
         </div>
-        <div id="expertise" className="scroll-mt-24">
-        <ExperienciaComponent />
+      </main>
+
+      <footer className="w-full bg-white border-t border-gray-200 py-8 px-6 text-center text-gray-500 shadow-inner mt-auto">
+        <p className="font-semibold text-gray-800">Gonzalo Flores — Desarrollador Fullstack</p>
+        <div className="flex justify-center items-center gap-4 mt-4 text-sm font-medium">
+          <a href="mailto:gokinflores@gmail.com" className="hover:text-blue-600 transition-colors">
+            gokinflores@gmail.com
+          </a>
+          <span className="text-gray-300">|</span>
+          <a href="https://github.com/elgonza7" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+            GitHub
+          </a>
+          <span className="text-gray-300">|</span>
+          <a href="https://instagram.com/gokinflores" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+            Instagram
+          </a>
         </div>
-        <div id="proyectos" className="scroll-mt-24">
-        <ProyectosComponent />
-        </div>
-        <div id="services" className="scroll-mt-24">
-        <ServiciosComponent />
-        </div>
-        <div id="contact" className="scroll-mt-24">
-        <ContactoComponent />
-        </div>
-        <div className="scroll-mt-24 bg-black rounded-3xl border border-gray-100 shadow-sm p-8 md:p-12 flex flex-col gap-8">
-                <LlmAvatarAssistant
-        key={side}
-        config={{ ...CONFIG, side }}
-        onSend={() => { /* demo hook */ }}
-      />
-        </div>
-      </div>
-    </main>
+        <p className="text-xs text-gray-400 mt-6">
+          © {new Date().getFullYear()} Todos los derechos reservados.
+        </p>
+      </footer>
+
+    </div>
   );
 }
-
 
 export default Body;
