@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 
-// Envuelve cualquier cosa y la hace aparecer suave cuando entra en pantalla
 function Aparecer({ children, delay = 0 }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);

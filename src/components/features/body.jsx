@@ -84,7 +84,7 @@ function Body() {
             GitHub
           </a>
           <span className="text-gray-300">|</span>
-          <a href="https://instagram.com/gokinflores" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+          <a href="https://www.instagram.com/gonfloress" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
             Instagram
           </a>
         </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import yo from '../../../assets/yo.jpeg';
 
 function NameComponent() {
     // Arranca con lo que quedó guardado la última vez
@@ -20,7 +21,7 @@ function NameComponent() {
                 <div className="w-12 h-12 rounded-xl overflow-hidden bg-gray-200 shrink-0">
                     <img
                         className="object-cover w-12 h-12 rounded-xl" 
-                        src="https://github.com/elgonza7.png" 
+                        src={yo} 
                         alt="Foto de perfil de Gonzalo Flores"
                         width="48"
                         height="48" 
