@@ -2,15 +2,21 @@ import React from 'react';
 import alborLogo from '../../../assets/albor.png';
 import hfLogo from '../../../assets/hf.png';
 import zeroAutoLogo from '../../../assets/zeroautoapp.png';
+import animelessImg from '../../../assets/animeless.png';
 
 // Componente reutilizable para las tarjetas de proyecto (DRY)
-const ProjectCard = ({ title, description, link, imgSrc, imgAlt }) => (
-  <article className="flex flex-col h-full bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-    <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+const ProjectCard = ({ title, description, link, imgSrc, imgAlt, badge }) => (
+  <article className="flex flex-col h-full bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2">
       📒 {title}
     </h3>
+    {badge && (
+      <span className="mt-2 self-start bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full">
+        {badge}
+      </span>
+    )}
     
-    <p className="mt-3 text-gray-600 text-sm leading-relaxed flex-grow">
+    <p className="mt-3 text-gray-600 dark:text-gray-300 text-sm leading-relaxed flex-grow">
       {description}
     </p>
     
@@ -23,10 +29,13 @@ const ProjectCard = ({ title, description, link, imgSrc, imgAlt }) => (
       >
         Ir al sitio web
       </a>
-      <div className="w-full h-40 overflow-hidden rounded-xl border border-gray-100 bg-gray-50 flex items-center justify-center p-2">
+      <div className="w-full h-40 overflow-hidden rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800 flex items-center justify-center p-2">
         <img 
           src={imgSrc} 
           alt={imgAlt} 
+          width="320"
+          height="160"
+          loading="lazy"
           className="w-full h-full object-contain" 
         />
       </div>
@@ -36,13 +45,13 @@ const ProjectCard = ({ title, description, link, imgSrc, imgAlt }) => (
 
 function ProyectosComponent() {
   return (
-    <section className="w-full bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-12 flex flex-col gap-8">
+    <section className="w-full bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm p-8 md:p-12 flex flex-col gap-8">
       
       <div className="flex flex-col gap-2">
-        <h2 className="text-3xl font-bold text-gray-900 tracking-tight">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
           📚 Proyectos
         </h2>
-        <p className="text-gray-600 text-sm md:text-base">
+        <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base">
           Una selección de mis trabajos más recientes.
         </p>
       </div>
@@ -50,6 +59,15 @@ function ProyectosComponent() {
       {/* Grid responsivo: 1 columna en móviles, 2 en tablets, 3 en pantallas grandes */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         
+        <ProjectCard 
+          title="AnimeLess"
+          badge="⭐ Proyecto propio — soy el dueño"
+          description="Juego web estilo Higher or Lower con animes: cada día hay nuevos enfrentamientos (se reinicia 8am ART). Tiene login, avatares y un leaderboard global diario e histórico."
+          link="https://animeless.com"
+          imgSrc={animelessImg}
+          imgAlt="Captura del leaderboard global de AnimeLess"
+        />
+
         <ProjectCard 
           title="Zero Auto App"
           description="Una aplicación web para la gestión de consultas, desarrollada con React y NextJS. Permite a los Laboratorios automatizar sus consultas, preguntas y respuestas hacia los clientes por WhatsApp."

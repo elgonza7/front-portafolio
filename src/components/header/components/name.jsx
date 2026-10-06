@@ -1,24 +1,18 @@
-import React, { useState } from 'react';
-import './name.css';
+import React, { useState, useEffect, useCallback } from 'react';
 
 function NameComponent() {
-    // 1. Declaramos el estado en el tope del componente
-    const [isDark, setIsDark] = useState(false);
+    // Arranca con lo que quedó guardado la última vez
+    const [isDark, setIsDark] = useState(() => localStorage.getItem('tema') === 'dark');
 
-    // 2. Creamos la función manejadora dentro del componente
-// ... (resto del archivo igual)
-    const toggleModoOscuro = () => {
-        setIsDark(prev => {
-            const next = !prev;
-            if (next) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-            return next;
-        });
-    };
+    // Cada vez que cambia isDark, actualizamos la clase del <html> y lo guardamos
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark', isDark);
+        localStorage.setItem('tema', isDark ? 'dark' : 'light');
+    }, [isDark]);
 
+    const toggleModoOscuro = useCallback(() => {
+        setIsDark(prev => !prev);
+    }, []);
 
     return (
         <div className="flex flex-col gap-6">
@@ -26,23 +20,24 @@ function NameComponent() {
                 <div className="w-12 h-12 rounded-xl overflow-hidden bg-gray-200 shrink-0">
                     <img
                         className="object-cover w-12 h-12 rounded-xl" 
-                        src="https://avatars.githubusercontent.com/u/12345677?v=4" 
-                        alt="Profile" 
+                        src="https://github.com/elgonza7.png" 
+                        alt="Foto de perfil de Gonzalo Flores"
+                        width="48"
+                        height="48" 
                     />
                 </div>
                 <div className="flex flex-col min-w-0">
-                    <h2 className="font-semibold text-gray-800 text-xl truncate">Flores Gonzalo</h2>
-                    <p className="text-xs text-gray-400 truncate">Desarrollador Fullstack</p>
+                    <h2 className="font-semibold text-gray-800 dark:text-gray-100 text-xl truncate">Flores Gonzalo</h2>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 truncate">Desarrollador Fullstack</p>
                 </div>
                 
                 <div className="flex items-center gap-2">
-                    {/* 3. Asignamos la función correctamente al evento onClick */}
-                    <button 
-                        className="w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors flex items-center justify-center" 
+                                        <button 
+                        className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 transition-colors flex items-center justify-center" 
                         onClick={toggleModoOscuro}
                         aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-600 dark:text-gray-300">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1.5m0 15V21m8.485-8.485h-1.5M4.515 12h-1.5m15.364 4.95l-1.06-1.06M6.636 6.636l-1.06-1.06m12.728 12.728l-1.06-1.06M6.636 17.364l-1.06 1.06M12 5a7 7 0 100 14 7 7 0 000-14z" />
                         </svg>
                     </button>

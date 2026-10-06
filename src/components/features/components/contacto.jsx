@@ -2,17 +2,17 @@ import React from 'react';
 
 function ContactoComponent() {
   return (
-    <section className="w-full bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-12 flex flex-col relative">
+    <section className="w-full bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm p-8 md:p-12 flex flex-col relative">
       
 
 
       <div className="absolute top-8 right-8 hidden md:block">
-        <span className="bg-gray-50 border border-gray-100 text-gray-500 text-xs py-1.5 px-4 rounded-full flex items-center gap-2">
+        <span className="bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-800 text-gray-500 text-xs py-1.5 px-4 rounded-full flex items-center gap-2">
           ✨ Armando experiencias únicas.
         </span>
       </div>
       <div className="mt-4 md:mt-8 max-w-3xl">
-        <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
+        <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight tracking-tight">
           ¿Tienes un proyecto en mente? <br className="hidden md:block" />
           <span className="text-blue-600">Hablemos.</span>
         </h2>
@@ -31,9 +31,9 @@ function ContactoComponent() {
           📍 San Juan, Arg
         </div>
       </div>
-      <hr className="border-gray-100 my-10 md:my-12" />
+      <hr className="border-gray-100 dark:border-gray-800 my-10 md:my-12" />
       <div className="flex flex-col gap-6">
-        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+        <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">
           Confía en mi trabajo y habilidades para llevar tus ideas al siguiente nivel.
         </p>
         

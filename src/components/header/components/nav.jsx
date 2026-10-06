@@ -28,7 +28,7 @@ export default function NavComponent() {
                                     className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl text-sm transition-all 
                                     ${isActive 
                                         ? 'bg-blue-600 text-white shadow-md shadow-blue-200 font-bold' 
-                                        : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800 font-medium'
+                                        : 'text-gray-500 hover:bg-gray-50 dark:bg-gray-800 hover:text-gray-800 dark:text-gray-100 font-medium'
                                     }`}
                                 >
                                     <Icon size={18} className={isActive ? 'text-white' : 'text-gray-500'} />

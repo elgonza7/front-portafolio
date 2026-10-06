@@ -2,14 +2,14 @@ import React from 'react';
 
 
 const ServiceCard = ({ icon, title, description }) => (
-  <article className="flex flex-col bg-gray-50 border border-gray-100 p-8 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
+  <article className="flex flex-col bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-800 p-8 rounded-2xl hover:bg-white dark:hover:bg-gray-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group">
     <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
       {icon}
     </div>
-    <h3 className="text-xl font-bold text-gray-800 mb-3">
+    <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3">
       {title}
     </h3>
-    <p className="text-gray-600 text-sm leading-relaxed">
+    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
       {description}
     </p>
   </article>
@@ -17,12 +17,12 @@ const ServiceCard = ({ icon, title, description }) => (
 
 function ServiciosComponent() {
   return (
-    <section className="w-full bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-12 flex flex-col gap-10">
+    <section className="w-full bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm p-8 md:p-12 flex flex-col gap-10">
       <div className="flex flex-col gap-4 max-w-3xl">
-        <h2 className="text-3xl font-bold text-gray-900 tracking-tight">
+        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
           ⚙️ Servicios
         </h2>
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">
           Ofrezco una variedad de servicios de desarrollo web y móvil, incluyendo diseño de interfaces, desarrollo de aplicaciones, optimización de rendimiento y mantenimiento continuo. Mi objetivo es ayudar a las empresas a alcanzar sus metas digitales mediante soluciones tecnológicas innovadoras y eficientes.
         </p>
       </div>
@@ -49,12 +49,12 @@ function ServiciosComponent() {
         />
       </div>
 
-      <div className="border-t border-gray-100 my-2"></div>
+      <div className="border-t border-gray-100 dark:border-gray-800 my-2"></div>
       <div className="flex flex-col gap-6">
-        <h3 className="text-2xl font-bold text-gray-800">
+        <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
           ✨ Servicios Destacados
         </h3>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-600 text-sm">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-gray-600 dark:text-gray-300 text-sm">
           <li className="flex items-start gap-2">
             <span className="text-blue-600 font-bold">•</span>
             Desarrollo de aplicaciones web modernas y atractivas.

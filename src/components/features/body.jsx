@@ -1,11 +1,11 @@
 // src/components/features/body.jsx
 import React, { useState } from "react";
-import HomeComponent from "/components/home.jsx";
-import ExperienciaComponent from "/components/experiencia.jsx";
-import ProyectosComponent from "/components/proyectos.jsx";
-import ServiciosComponent from "/components/servicios.jsx";
-import ContactoComponent from "/components/contacto.jsx";
-import LlmAvatarAssistant from '../../ai/llm-avatar-assistant-react-main/src/components/LlmAvatarAssistant.jsx'
+import HomeComponent from "./components/home.jsx";
+import ExperienciaComponent from "./components/experiencia.jsx";
+import ProyectosComponent from "./components/proyectos.jsx";
+import ServiciosComponent from "./components/servicios.jsx";
+import ContactoComponent from "./components/contacto.jsx";
+import LlmAvatarAssistant from '../ai/llm-avatar-assistant-react-main/src/components/LlmAvatarAssistant.jsx'
 
 const CONFIG = {
   baseUrl: '/v1',
@@ -45,7 +45,7 @@ function Body() {
     };
 
   return (
-    <div className="flex-1 ml-64 flex flex-col h-screen overflow-y-auto bg-gray-200">
+    <div className="flex-1 ml-64 flex flex-col h-screen overflow-y-auto bg-gray-200 dark:bg-gray-950">
      <main id="contenido" className="flex-1 p-6 flex flex-col gap-12">
         <div className="max-w-5xl w-full mx-auto flex flex-col gap-12">
           <div id="home" className="scroll-mt-24">
@@ -63,7 +63,7 @@ function Body() {
           <div id="contact" className="scroll-mt-24">
             <ContactoComponent />
           </div>
-          <div className="scroll-mt-24 bg-black rounded-3xl border border-gray-100 shadow-sm p-8 md:p-12 flex flex-col gap-8">
+          <div className="scroll-mt-24 bg-black rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm p-8 md:p-12 flex flex-col gap-8">
             <LlmAvatarAssistant
               key={side}
               config={{ ...CONFIG, side }}
@@ -73,8 +73,8 @@ function Body() {
         </div>
       </main>
 
-      <footer className="w-full bg-white border-t border-gray-200 py-8 px-6 text-center text-gray-500 shadow-inner mt-auto">
-        <p className="font-semibold text-gray-800">Gonzalo Flores — Desarrollador Fullstack</p>
+      <footer className="w-full bg-white dark:bg-gray-900 border-t border-gray-200 py-8 px-6 text-center text-gray-500 shadow-inner mt-auto">
+        <p className="font-semibold text-gray-800 dark:text-gray-100">Gonzalo Flores — Desarrollador Fullstack</p>
         <div className="flex justify-center items-center gap-4 mt-4 text-sm font-medium">
           <a href="mailto:gokinflores@gmail.com" className="hover:text-blue-600 transition-colors">
             gokinflores@gmail.com

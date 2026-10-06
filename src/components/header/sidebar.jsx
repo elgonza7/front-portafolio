@@ -5,7 +5,7 @@ import DownloadButton from './components/download.jsx';
 
 function Sidebar() {
   return (
-    <aside className="fixed top-0 left-0 h-screen w-64 bg-white border-r border-gray-100 flex flex-col justify-between p-5 font-sans shadow-sm">
+    <aside className="fixed top-0 left-0 h-screen w-64 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 flex flex-col justify-between p-5 font-sans shadow-sm">
 
       <div className="flex flex-col gap-6">
         <NameComponent />
