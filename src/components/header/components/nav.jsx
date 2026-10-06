@@ -1,5 +1,5 @@
 import { Home, Code, Briefcase, Wrench, Mail } from 'lucide-react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const menuItems = [
     { id: 'home', name: 'Casa', icon: Home, idMove: 'home' },
@@ -11,6 +11,28 @@ const menuItems = [
 
 export default function NavComponent() {
     const [activeTab, setActiveTab] = useState('home');
+
+    // Mira qué sección está en pantalla y marca ese botón del menú
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const item = menuItems.find((m) => m.idMove === entry.target.id);
+                        if (item) setActiveTab(item.id);
+                    }
+                });
+            },
+            { rootMargin: '-45% 0px -50% 0px' }
+        );
+
+        menuItems.forEach((item) => {
+            const seccion = document.getElementById(item.idMove);
+            if (seccion) observer.observe(seccion);
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <div className="flex flex-col gap-6">
