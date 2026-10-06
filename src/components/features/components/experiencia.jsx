@@ -5,12 +5,12 @@ const pestanas = [
   {
     id: 'tech',
     label: '💻 Tecnologías',
-    items: ['React', 'Next.js', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Git / GitHub', 'PostgreSQL', 'MySQL', 'MongoDB', 'C# (.NET)', 'Python', 'Unity 2D / 3D'],
+    items: ['React', 'Next.js', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Git / GitHub', 'PostgreSQL', 'C# (.NET)', 'Python', 'Unity 2D / 3D'],
   },
   {
     id: 'metodos',
     label: '🎬 Metodologías',
-    items: ['Scrum', 'Kanban', 'Control de versiones', 'Pruebas unitarias', 'Pruebas de integración', 'Despliegue continuo'],
+    items: ['Scrum', 'Control de versiones', 'Pruebas unitarias', 'Pruebas de integración', 'Despliegue continuo'],
   },
   {
     id: 'blandas',

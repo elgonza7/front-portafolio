@@ -9,14 +9,6 @@ function DownloadButton() {
         <p className="text-xs font-semibold text-blue-600/70">{hoy}</p>
         <p className="text-xs font-bold text-gray-700 dark:text-gray-200 mt-0.5">San Juan, Argentina</p>
       </div>
-      <a 
-        href="/curriculum.pdf"
-        download="Gonzalo_Flores_CV.pdf"
-        className="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white rounded-xl py-3 text-xs font-medium transition-colors shadow-sm"
-      >
-        <Download size={16} />
-        <span className="text-xs font-bold">Download CV</span>
-      </a>
     </div>
   )
 }
